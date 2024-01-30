@@ -168,6 +168,7 @@ header{
 /*form*/
 #form{
     
+    display: none;
     display: flex;
     flex-direction: column;
     width: 50%;
