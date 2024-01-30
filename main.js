@@ -6,6 +6,24 @@ const form = document.querySelector("#form");
 const library = document.querySelector(".library");
 const buttonShow = document.querySelector("#show-library");
 const booksConteiner = document.querySelector("#books");
+const btnModal = document.querySelector("#show-modal"); 
+const modal = document.querySelector(".modal")
+const btnCancel = document.querySelector("#btn-cancel"); 
+
+btnCancel.addEventListener("click", ()=>{ 
+    dataName.value = ""; 
+    dataAuthor.value = ""; 
+    dataPages.value = ""; 
+    dataRead.value = false;
+
+    modal.style.display = "none";
+});
+
+
+btnModal.addEventListener("click", ()=>{
+    modal.style.display = "block";
+})
+
 
 
 
@@ -41,24 +59,38 @@ function createLibrary(){
             counter++;//counter for dataset
             /*div declare*/ 
             let div = document.createElement("div");
-            let divTitle = document.createElement("div"); 
+            let title = document.createElement("h2"); 
             let divInfo = document.createElement("div");
             let read = document.createElement("div");
-    
+            let divGroupButtons = document.createElement("div"); 
+
             div.classList.add("list-card-book"); 
             div.classList.add("flex-column-center")
             div.dataset.indexNumber = counter;
     
             /*div titlte*/ 
-            divTitle.classList.add("div-title");
-            divTitle.textContent = `${book.title}`;
+            title.classList.add("div-title");
+            title.textContent = `${book.title}`;
             
-            /*Div info */ 
-            divInfo.textContent = `Author: ${book.author}.\n`;
-            divInfo.textContent += `Pages: ${book.pages}.`;
+            /*Div info */
+            let h3 = document.createElement("h3"); 
+            let p = document.createElement("p");
+
+            h3.innerText = `Author: ${book.author}.`;
+            p.innerText = `Pages: ${book.pages}`;
+
+            
+            divInfo.classList.add("flex-column-center");
+            divInfo.classList.add("div-info"); 
+
+            divInfo.appendChild(h3); 
+            divInfo.appendChild(p); 
+
+            
     
             /*Div readed */    
-    
+            
+
             read.dataset.indexNumber = counter;
             if (book.read == true) {
                 read.classList.add("book-readed"); 
@@ -76,11 +108,16 @@ function createLibrary(){
             button.dataset.indexNumber = counter;
             button.innerText = "X";
     
-    
-            div.appendChild(divTitle);
+            divGroupButtons.classList.add("group-buttons");
+            divGroupButtons.classList.add("flex-row-center"); 
+
+            divGroupButtons.appendChild(read);
+            divGroupButtons.appendChild(button);
+            
+            
+            div.appendChild(title);
             div.appendChild(divInfo); 
-            div.appendChild(read);
-            div.appendChild(button);
+            div.appendChild(divGroupButtons);
     
             booksConteiner.appendChild(div);
         } 
@@ -139,12 +176,11 @@ buttonForm.addEventListener("click", (e) => {
     dataPages.value = ""; 
     dataRead.value = false;
 
-    createLibrary();
+    createLibrary(); 
+    modal.style.display = "none";
     
 });
 
-
-let counter = 0;
 
 /*https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach */
 /**https://developer.mozilla.org/es/docs/Web/HTML/Element/dialog */ 

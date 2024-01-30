@@ -12,34 +12,42 @@
     </header>
     <div class="container flex-row-center">
         <div class="library flex-column-center">
+            <h2>My books:</h2>
             <div id="books">
                 
             </div>
         </div>
         <div class="library-form">
-
-           
-            <form action="" id="form" method="dialog">
-                    <label for="name">
-                        Name of the book:
-                    </label>
-                    <input type="text" name="title" id="title" placeholder="title">
-                    <label for="author">
-                        Author:
-                    </label>
-                    <input type="text" name="author" id="author" placeholder="author">
-                    <label for="pages">
-                        Number of pages:
-                    </label>
-                    <input type="number" name="pages" id="pages" placeholder="pages...">
+            <button id="show-modal">Add a book</button>
+            <!-- <button></button>
+            <button></button> -->
+            <div class="modal">
+                <form action="" id="form" method="dialog">
+                        <label for="name">
+                            Name of the book:
+                        </label>
+                        <input type="text" name="title" id="title" placeholder="title">
+                        <label for="author">
+                            Author:
+                        </label>
+                        <input type="text" name="author" id="author" placeholder="author">
+                        <label for="pages">
+                            Number of pages:
+                        </label>
+                        <input type="number" name="pages" id="pages" placeholder="pages...">
                 
-                    <fieldset class="flex-column-center">
-                        <legend>Do you read this book?:</legend>
-                        <input type="checkbox" name="read" id="read">
-                    </fieldset>
-                    <button id="btn-send">Enviar</button>
-            </form>
-              
+                        <fieldset class="flex-column-center">
+                            <legend>readed?:</legend>
+                            <input type="checkbox" name="read" id="read">
+                        </fieldset>
+                        <div class="buttons-group flex-row-center">
+                            <button id="btn-send">Add</button>
+                            <button id="btn-cancel">Cancel</button>
+                        </div>
+                </form>
+            </div>
+             
+ 
         </div>
     </div>
     <script src="main.js"></script>
